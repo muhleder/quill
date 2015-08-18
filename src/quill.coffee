@@ -158,9 +158,9 @@ class Quill extends EventEmitter2
   getModule: (name) ->
     return @modules[name]
 
-  getSelection: ->
+  getSelection: (ignoreFocus = false) ->
     @editor.checkUpdate()   # Make sure we access getRange with editor in consistent state
-    return @editor.selection.getRange()
+    return @editor.selection.getRange(ignoreFocus)
 
   getText: (start = 0, end = null) ->
     return _.map(this.getContents(start, end).ops, (op) ->

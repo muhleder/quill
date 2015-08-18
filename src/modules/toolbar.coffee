@@ -53,8 +53,7 @@ class Toolbar
     dom(input).on(eventName, =>
       value = if eventName == 'change' then dom(input).value() else !dom(input).hasClass('ql-active')
       @preventUpdate = true
-      @quill.focus()
-      range = @quill.getSelection()
+      range = @quill.getSelection(true)
       callback(range, value) if range?
       @preventUpdate = false
       return true
